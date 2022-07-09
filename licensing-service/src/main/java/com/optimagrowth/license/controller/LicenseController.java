@@ -19,8 +19,8 @@ public class LicenseController {
     private final LicenseService licenseService;
 
     @GetMapping(value = "/{licenseId}")
-    public ResponseEntity<License> getLicense(@PathVariable("organizationId") String organizationId,
-                                              @PathVariable("licenseId") String licenseId) {
+    public ResponseEntity<License> getLicense(@PathVariable("organizationId") Long organizationId,
+                                              @PathVariable("licenseId") Long licenseId) {
 
         License license = licenseService.getLicense(licenseId, organizationId);
         license.add(
@@ -34,18 +34,18 @@ public class LicenseController {
     }
 
     @PutMapping
-    public ResponseEntity<String> updateLicense(@PathVariable("organizationId") String organizationId, @RequestBody License request) {
+    public ResponseEntity<String> updateLicense(@PathVariable("organizationId") Long organizationId, @RequestBody License request) {
         return ResponseEntity.ok(licenseService.updateLicense(request, organizationId));
     }
 
     @PostMapping
-    public ResponseEntity<String> createLicense(@PathVariable("organizationId") String organizationId, @RequestBody License request,
+    public ResponseEntity<String> createLicense(@PathVariable("organizationId") Long organizationId, @RequestBody License request,
                                                 @RequestHeader(value = "Accept-Language", required = false) Locale locale) {
         return ResponseEntity.ok(licenseService.createLicense(request, organizationId, locale));
     }
 
     @DeleteMapping(value = "/{licenseId}")
-    public ResponseEntity<String> deleteLicense(@PathVariable("organizationId") String organizationId, @PathVariable("licenseId") String licenseId) {
+    public ResponseEntity<String> deleteLicense(@PathVariable("organizationId") Long organizationId, @PathVariable("licenseId") Long licenseId) {
         return ResponseEntity.ok(licenseService.deleteLicense(licenseId, organizationId));
     }
 }

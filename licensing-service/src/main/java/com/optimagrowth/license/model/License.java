@@ -18,12 +18,12 @@ public class License extends RepresentationModel<License> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "license_id", nullable = false)
-    private String licenseId;
+    private Long licenseId;
 
     private String description;
 
     @Column(name = "organization_id", nullable = false)
-    private String organizationId;
+    private Long organizationId;
 
     @Column(name = "product_name", nullable = false)
     private String productName;
